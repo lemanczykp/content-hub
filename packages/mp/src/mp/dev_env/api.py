@@ -34,6 +34,7 @@ class BackendAPI:
         username: str | None = None,
         password: str | None = None,
         api_key: str | None = None,
+        verify_ssl: bool = True,
     ) -> None:
         """Initialize the BackendAPI with credentials and API root.
 
@@ -52,6 +53,7 @@ class BackendAPI:
         self.password = password
         self.api_key = api_key
         self.session = requests.Session()
+        self.session.verify = verify_ssl
         self.token = None
 
         if api_key is not None:
